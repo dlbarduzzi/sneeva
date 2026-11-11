@@ -1,12 +1,4 @@
-import { Text, View, StyleSheet } from "react-native";
-
-export default function Index() {
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to Sneeva!</Text>
-    </View>
-  );
-}
+import { StyleSheet, Text, View } from "react-native"
 
 const styles = StyleSheet.create({
   container: {
@@ -14,4 +6,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-});
+})
+
+export default function Index() {
+  return (
+    <View style={styles.container}>
+      <Text>Welcome to Sneeva!</Text>
+    </View>
+  )
+}
