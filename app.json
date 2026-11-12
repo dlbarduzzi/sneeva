@@ -9,7 +9,10 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon",
-      "bundleIdentifier": "com.dlbarduzzi.sneeva"
+      "bundleIdentifier": "com.dlbarduzzi.sneeva",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -140,6 +143,17 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "a913dca8-8740-45f8-b9ae-3d1e9d661560"
+      }
+    },
+    "owner": "dlbarduzzi"
   }
 }
