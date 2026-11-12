@@ -3,3 +3,19 @@
 @import "tailwindcss/utilities.css";
 
 @import "nativewind/theme";
+
+/*
+ * Geist is embedded at build time by the expo-font config plugin (app.json),
+ * weights 300-900 plus italics. Pick weights with font-light ... font-black
+ * and italics with italic.
+ * NativeWind sets --font-sans per platform, so override it the same way.
+ */
+:root {
+  @media ios {
+    --font-sans: Geist;
+  }
+
+  @media android {
+    --font-sans: Geist;
+  }
+}

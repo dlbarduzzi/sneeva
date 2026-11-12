@@ -5,8 +5,8 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web",
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
@@ -15,7 +15,9 @@
     "check": "npm run typecheck && npm run lint"
   },
   "dependencies": {
+    "@expo-google-fonts/geist": "^0.4.2",
     "@expo/ui": "~58.0.28",
+    "cn": "^0.5.2",
     "expo": "~58.0.24",
     "expo-constants": "~58.0.16",
     "expo-device": "~58.0.5",
