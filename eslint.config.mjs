@@ -20,6 +20,7 @@ export default antfu({
     ".cache/**",
     ".local/**",
     "assets/expo.icon/**",
+    "nativewind-env.d.ts",
     "node_modules/**",
   ],
 }, {
