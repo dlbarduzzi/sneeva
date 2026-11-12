@@ -89,7 +89,12 @@ export default antfu({
     "expo/prefer-box-shadow": "error",
     "expo/use-dom-exports": "error",
     "react-native/no-inline-styles": "error",
-    "react-native/no-raw-text": "error",
+    "react-native/no-raw-text": [
+      "error",
+      {
+        skip: ["NativeTabs.Trigger.Label"],
+      },
+    ],
     "react-native/no-single-element-style-arrays": "error",
     "react-native/no-unused-styles": "error",
     "react-native/split-platform-components": "error",
