@@ -27,6 +27,7 @@ export default antfu({
   files: ["**/*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}"],
   rules: {
     "antfu/if-newline": "off",
+    "antfu/reasonable-newline": "off",
     "curly": ["error", "all"],
     "eqeqeq": ["error", "always"],
     "no-duplicate-imports": [
