@@ -1,8 +1,18 @@
 import type { ReactNode } from "react"
 
+import { Link } from "expo-router"
+import { Image } from "expo-image"
 import { useSSO } from "@clerk/expo"
 import { useState } from "react"
-import { ActivityIndicator, Alert, ScrollView, View } from "react-native"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
+
+import {
+  ActivityIndicator,
+  Alert,
+  ScrollView,
+  StyleSheet,
+  View,
+} from "react-native"
 
 import { Text } from "@/components/ui/text"
 import { Button } from "@/components/ui/button"
@@ -11,9 +21,8 @@ import { AppleLogo } from "@/components/logo/apple"
 import { GoogleLogo } from "@/components/logo/google"
 import { FacebookLogo } from "@/components/logo/facebook"
 
+import logo from "@/assets/images/logo-full-dark.svg"
 import { cn } from "cn"
-import { Link } from "expo-router"
-import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 async function delay(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms))
@@ -90,6 +99,13 @@ function ButtonProvider({
   )
 }
 
+const styles = StyleSheet.create({
+  logo: {
+    width: 96,
+    height: 96,
+  },
+})
+
 export default function SignIn() {
   const insets = useSafeAreaInsets()
   const { signIn, provider, isPending } = useSignIn()
@@ -105,10 +121,21 @@ export default function SignIn() {
     >
       <View className="flex-1">
         <View className="flex-1" />
-        <Text className="text-center text-xl font-extrabold">
-          Sign in
-        </Text>
-        <View className="flex-1 justify-end gap-3">
+        <View className="items-center">
+          <Image
+            source={logo}
+            style={styles.logo}
+            contentFit="contain"
+            accessibilityLabel="Sneeva logo"
+          />
+          <Text className="mt-6 text-center text-3xl font-extrabold">
+            Sneeva
+          </Text>
+          <Text className="mt-2 text-center text-base text-neutral-600">
+            Your on-demand physical therapy companion.
+          </Text>
+        </View>
+        <View className="mt-12 gap-3">
           <ButtonProvider
             logo={<GoogleLogo size={22} />}
             label="Continue with Google"
@@ -130,27 +157,28 @@ export default function SignIn() {
             isPending={isPending}
             showIndicator={provider === "apple"}
           />
-          <Text className="mt-3 text-center text-base text-neutral-600">
-            By continuing, you agree to our
-            {"\n"}
-            <Link
-              href="/terms"
-              className="font-medium"
-            >
-              Terms of Service
-            </Link>
-            {" "}
-            and
-            {" "}
-            <Link
-              href="/privacy"
-              className="font-medium"
-            >
-              Privacy Policy
-            </Link>
-            .
-          </Text>
         </View>
+        <View className="flex-1 min-h-12" />
+        <Text className="mb-3 text-center text-base text-neutral-600">
+          By continuing, you agree to our
+          {"\n"}
+          <Link
+            href="/terms"
+            className="font-medium"
+          >
+            Terms of Service
+          </Link>
+          {" "}
+          and
+          {" "}
+          <Link
+            href="/privacy"
+            className="font-medium"
+          >
+            Privacy Policy
+          </Link>
+          .
+        </Text>
       </View>
     </ScrollView>
   )
