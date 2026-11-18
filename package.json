@@ -15,7 +15,11 @@
     "check": "npm run typecheck && npm run lint"
   },
   "dependencies": {
+    "@expo-google-fonts/inter": "^0.4.2",
     "@expo/ui": "~58.0.29",
+    "@rn-primitives/slot": "^1.5.2",
+    "class-variance-authority": "^0.7.1",
+    "cn": "^0.5.2",
     "expo": "~58.0.26",
     "expo-constants": "~58.0.16",
     "expo-device": "~58.0.5",

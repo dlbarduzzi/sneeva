@@ -8,7 +8,8 @@
     "scheme": "sneeva",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.dlbarduzzi.sneeva"
     },
     "android": {
       "adaptiveIcon": {
@@ -31,6 +32,54 @@
           "backgroundColor": "#208AEF",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "ios": {
+            "fonts": [
+              "./node_modules/@expo-google-fonts/inter/400Regular/Inter_400Regular.ttf",
+              "./node_modules/@expo-google-fonts/inter/500Medium/Inter_500Medium.ttf",
+              "./node_modules/@expo-google-fonts/inter/600SemiBold/Inter_600SemiBold.ttf",
+              "./node_modules/@expo-google-fonts/inter/700Bold/Inter_700Bold.ttf",
+              "./node_modules/@expo-google-fonts/inter/800ExtraBold/Inter_800ExtraBold.ttf",
+              "./node_modules/@expo-google-fonts/inter/900Black/Inter_900Black.ttf"
+            ]
+          },
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "Inter",
+                "fontDefinitions": [
+                  {
+                    "path": "./node_modules/@expo-google-fonts/inter/400Regular/Inter_400Regular.ttf",
+                    "weight": 400
+                  },
+                  {
+                    "path": "./node_modules/@expo-google-fonts/inter/500Medium/Inter_500Medium.ttf",
+                    "weight": 500
+                  },
+                  {
+                    "path": "./node_modules/@expo-google-fonts/inter/600SemiBold/Inter_600SemiBold.ttf",
+                    "weight": 600
+                  },
+                  {
+                    "path": "./node_modules/@expo-google-fonts/inter/700Bold/Inter_700Bold.ttf",
+                    "weight": 700
+                  },
+                  {
+                    "path": "./node_modules/@expo-google-fonts/inter/800ExtraBold/Inter_800ExtraBold.ttf",
+                    "weight": 800
+                  },
+                  {
+                    "path": "./node_modules/@expo-google-fonts/inter/900Black/Inter_900Black.ttf",
+                    "weight": 900
+                  }
+                ]
+              }
+            ]
+          }
         }
       ]
     ],
