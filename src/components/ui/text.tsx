@@ -8,10 +8,10 @@ import { cn } from "cn"
 import { cva } from "class-variance-authority"
 import { Slot } from "@rn-primitives/slot"
 
-const textVariants = cva("font-sans font-normal text-lg", {
+const textVariants = cva("font-sans font-normal text-base", {
   variants: {
     variant: {
-      default: "text-blue-500",
+      default: "text-foreground",
     },
   },
   defaultVariants: {
