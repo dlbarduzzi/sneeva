@@ -39,3 +39,17 @@ Docs: https://docs.expo.dev/eas/index.md
 - If `ios/` and `android/` directories do not exist, they are generated (Continuous Native Generation). Never create or edit them by hand — configure native behavior in `app.json` and config plugins.
 - Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `npx expo run:ios|android` locally, or `eas build --profile development`.
 - Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
+
+### Git Operations Rules
+
+- Only execute read-only Git commands (e.g., `git status`, `git diff`, `git log`, `git show`).
+- Never execute Git commands that modify the working tree, staging area, repository, or remote (e.g., `git add`, `git commit`, `git push`, `git reset`, `git stash`) unless explicitly instructed by the user.
+- Always leave code changes available for the user to review before performing any Git write operations.
+
+### Skill Usage Rules
+
+- When explicitly asked to use a skill, locate and review the available skill before starting the task.
+- Verify that the skill is up to date and compatible with the project's installed package versions.
+- If the skill is missing, outdated, incompatible, or its compatibility cannot be verified, stop and notify the user.
+- Ask whether to install or update the skill before proceeding or continue with the existing version, if available.
+- Never install or update skills without explicit user approval.
