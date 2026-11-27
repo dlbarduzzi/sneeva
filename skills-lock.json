@@ -1,6 +1,13 @@
 {
   "version": 2,
   "skills": {
+    "clerk-expo": {
+      "source": "clerk/skills",
+      "commit": "0a5a49e6fe3d57c34d307a17e0f711ccd63fb409",
+      "sourceType": "github",
+      "skillPath": "skills/clerk-expo/SKILL.md",
+      "computedHash": "0156e300a21f2bfff467585209188aea3ec74904350994d1f3ac0b701e806885"
+    },
     "eas-app-stores": {
       "source": "expo/skills",
       "commit": "c5e536273b6b4a7a3ad5dd9d74b6098c15138b21",

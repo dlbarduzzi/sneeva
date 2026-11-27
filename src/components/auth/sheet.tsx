@@ -1,5 +1,7 @@
+import { ActivityIndicator, Alert, View } from "react-native"
 import { Link } from "expo-router"
-import { View } from "react-native"
+import { useSSO } from "@clerk/expo"
+import { useState } from "react"
 
 import { Text } from "@/components/ui/text"
 import { Button } from "@/components/ui/button"
@@ -7,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { AppleLogo } from "@/components/logo/apple"
 import { GoogleLogo } from "@/components/logo/google"
 
+type Provider = "apple" | "google"
 type AuthAction = "sign-in" | "sign-up"
 
 const actionContent: Record<AuthAction, {
@@ -23,8 +26,51 @@ const actionContent: Record<AuthAction, {
   },
 }
 
+async function delay(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms))
+}
+
+function useSignIn(action: AuthAction) {
+  const { startSSOFlow } = useSSO()
+
+  const [provider, setProvider] = useState<Provider | null>(null)
+  const [isPending, setIsPending] = useState(false)
+
+  async function signIn(_provider: Provider) {
+    if (isPending) {
+      return
+    }
+    setIsPending(true)
+    setProvider(_provider)
+    try {
+      if (_provider !== "google") {
+        await delay(2000)
+        return
+      }
+      const { createdSessionId, setActive } = await startSSOFlow({
+        strategy: `oauth_${_provider}`,
+      })
+      if (createdSessionId !== null && setActive !== undefined) {
+        await setActive({ session: createdSessionId })
+      }
+    }
+    catch (error) {
+      console.error(error)
+      const title = action === "sign-in" ? "Sign in" : "Sign up"
+      Alert.alert(`${title} failed`, "Something went wrong. Please try again.")
+    }
+    finally {
+      setIsPending(false)
+      setProvider(null)
+    }
+  }
+
+  return { signIn, provider, isPending }
+}
+
 function AuthSheet({ action }: { action: AuthAction }) {
   const content = actionContent[action]
+  const { signIn, provider, isPending } = useSignIn(action)
   return (
     <View className="px-1 pt-8 gap-12">
       <View className="items-center">
@@ -39,12 +85,26 @@ function AuthSheet({ action }: { action: AuthAction }) {
         </Text>
       </View>
       <View className="min-w-full gap-3">
-        <Button variant="outline">
-          <GoogleLogo />
+        <Button
+          variant="outline"
+          disabled={isPending}
+          onPress={async () => signIn("google")}
+        >
+          {isPending && provider === "google"
+            ? <ActivityIndicator size={22} className="text-neutral-500" />
+            : <GoogleLogo />
+          }
           <Text>Continue with Google</Text>
         </Button>
-        <Button variant="outline">
-          <AppleLogo />
+        <Button
+          variant="outline"
+          disabled={isPending}
+          onPress={async () => signIn("apple")}
+        >
+          {isPending && provider === "apple"
+            ? <ActivityIndicator size={22} className="text-neutral-500" />
+            : <AppleLogo />
+          }
           <Text>Continue with Apple</Text>
         </Button>
       </View>
