@@ -15,6 +15,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-neutral-900",
+        outline: "bg-transparent border-neutral-300",
       },
       size: {
         default: "h-12 px-5",
@@ -31,6 +32,7 @@ const buttonTextVariants = cva("font-medium", {
   variants: {
     variant: {
       default: "text-white",
+      outline: "text-neutral-900",
     },
     size: {
       default: "text-base",
